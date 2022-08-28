@@ -1,40 +1,63 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
-    while(1){
-        int i,k,num,space;
-    printf("C program to print a diamond shape\n\n");
-    printf("Enter a number between 1 and 12: ");
-    scanf("%i",&num);
-    int maxiK=2*num-1;
-if(num>0&&num<=12){
-    for(i=1;i<=num;i++){
-        for(space=1;space<=num-i;space++){
-            printf(" ");
-        }
-            for(k=1;k<=2*i-1;k++){
-                printf("*");
+int input1,input2;
+int userschange;
+int userschange1;
+int currencies[8]={5,10,20,50,100,200,500,1000};
 
-        }
-
-     printf("\n");
-    }
-
-    for(i=1;i<=num-1;i++){
-            for(space=1;space<=num-(num-i);space++){
-                printf(" ");
-            }
-                for(k=1;k<=maxiK-2*i;k++){
-                    printf("*");
-        }
-    printf("\n");
-    }
-    }else{
-        printf("Enter a number between 1 and 12\n");
-    }
-    }
-
-    return 0;
+void calculateuserschange(){
+    printf("C program to split a customers change to naira notes\n");
+    printf("How much goods do you want to buy?:\n");
+    scanf("%i",&input1);
+    printf("Enter the amount you want to pay:\n");
+    scanf("%i",&input2);
+    userschange=input2-input1;
+    userschange1=input2-input1;
 }
+void conditionsforuserschange(){
+
+        if(input2>=input1&&input1>0&&input2>0){
+        printf("users change:%i\n",userschange);
+    }
+
+}
+void actualcalculation(){
+    int anss;
+    int i;
+           if(input2>=input1&&input1>0&&input2>0){
+                        printf("transaction in progress...\n");
+
+        }else{
+            printf("Invalid transaction\n");
+        }
+    for(i=7;i>=0;i--){
+        anss=(int)userschange/currencies[i];
+        userschange=userschange-(anss*currencies[i]);
+        if(input2>=input1&&input1>0&&input2>0){
+                        printf("%i of %i naira\n",anss,currencies[i]);
+        }
+    }
+         if(userschange>0&&input2>=input1&&input1>0&&input2>0){
+            printf("your remaining change is %i naira\n",userschange);
+        }
+
+
+
+}
+
+   int main()
+{
+
+while(1){
+    calculateuserschange();
+    conditionsforuserschange();
+    actualcalculation();
+}
+return 0;
+}
+
+
+
+
+
